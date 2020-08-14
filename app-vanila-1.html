@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles.css">
         <title>FTT APP Note</title>
         <script>
             
@@ -11,47 +12,46 @@
                 var tagParagrafo = document.getElementById('tagParagrafo');
                 var taglist = document.getElementById('tagList');
                 var taginputcolor = document.getElementById('inputColor');
-                console.log(taginputcolor.value);
                 var lizinha = document.createElement("li");                            
+
+
+                console.log(taginputcolor.value);                
                 lizinha.innerHTML = inputNote;
                 taglist.appendChild(lizinha);
             }
-        </script>
-        <style>
-            body{font-family: Verdana,sans-serif;}
-            .icon{font-size: 40px;}
-        </style>
+
+            function addPost(){
+                var post_galery = document.getElementById('post_galery');
+                var post_text = document.getElementById('inputNote').value;
+                var chossen_color = document.getElementById('inputColor').value;
+
+                var div = document.createElement('div');
+                div.innerHTML = post_text;
+                div.classList.add('Post');
+                div.style.background = chossen_color;
+
+                post_galery.appendChild(div);
+            }
+        </script> 
    
     </head>
     <body>  
 
         <h1>FTT APP Note</h1>
-
         <p>
             <input type="text" id="inputNote">
             <input type="color" id="inputColor">
-            <button onclick="addText();">Salvar</button>
-        </p>
-        <div class="icon">U+1F600</div>
-        <hr>
-        <p id="tagParagrafo">
+            <button onclick="addPost();">Salvar</button>
+        </p>       
+        <hr>  
+       
+        <div id="post_galery">
 
-        </p>
-        <hr>
+        </div>
+        <div class="clear"></div>
         <ul id="tagList">
 
-        </ul>
-
-        <div id="page">
-            <div class="logo"></div>
-            <ul id="navigation">
-                <li><a href="">I</a></li>
-                <li><a href="">I</a></li>
-                <li><a href="">I</a></li>
-                <li><a href="">I</a></li>
-                <li><a href="">I</a></li>
-            </ul>
-        </div>
+        </ul> 
     
     </body>
 </html>
