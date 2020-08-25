@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTT - Search DDG</title>
+</head>
+<script>
+function ssearch() {
+    let searchText = document.getElementById("searchText");
+    let preTag = document.getElementById("preTag");
+    var apiKey = 'AKH7W3-X5RG56T3L5';
+    var ddgURL=`http://api.wolframalpha.com/v1/result?appid=${apiKey}&i=`;
+
+    console.log("Buscando...");
+    
+    console.log(searchText.value);
+    
+    //Cross Origin Resource Sharing (CORS)
+    //https://en.wikipedia.org/wiki/Cross-site_scripting
+
+    //https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch
+
+    console.log(ddgURL + apiKey);
+
+    fetch(ddgURL + searchText.value,{mode:"no-cors"})
+    .then(function(response) {
+        console.log(response.json());
+        return response.text();
+    })
+    .then(function(text) {
+        console.log('Request successful')
+        console.log(text);     
+        preTag.innerHTML = text;
+    })
+    .catch(function(error) {
+        log('Request failed', error)
+    });
+
+} //ssearch
+</script>
+<body>
+    <input type="search" id="searchText" required>
+    <button onclick="ssearch();">Search</button>
+    <hr>
+    <pre id="preTag"></pre>
+</body>
+</html>

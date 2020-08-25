@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        function searchText(){
+            var gitUser = "";
+            gitUser = document.getElementById('inputSearch').value;
+            var url = `https://api.github.com/users/${gitUser}/repos`;
+            console.log(url);
+
+            // Ajax
+            fetch(url,{mode:'cors'})
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(text) {
+                 console.log('Request successful', text)                 
+            })
+            .catch(function(error){
+
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <input id="inputSearch" type="search">
+    <input id="submitbutton" onclick="searchText()" type="submit">
+</body>
+</html>
